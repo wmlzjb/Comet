@@ -1,0 +1,12 @@
+page-home {
+    .social-cards ion-col {
+        padding: 0;
+    }
+    ion-content.cards-bg {
+        background-color: #f4f4f7;
+        h2 {
+            font-weight: 600;
+            color: #2e3135;
+        }
+    }
+}

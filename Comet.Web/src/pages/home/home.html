@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="cards-bg social-cards">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let item of news">
+    <ion-item>
+      <!-- <ion-avatar item-start>
+        <img src="img/marty-avatar.png">
+      </ion-avatar> -->
+      <h2>{{item.title}}</h2>
+      <p>{{item.createdDate|date:'yyyy-MM-dd'}}</p>
+    </ion-item>
+    <img *ngIf="item.screenshot" src="{{item.screenshot}}">
+    <ion-card-content>
+      <p>{{item.content}}</p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="eye"></ion-icon>
+          <div>{{item.viewsCount}}</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>{{item.commentsCount}}</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="star"></ion-icon>
+          <div>{{item.collectionCount}}</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="正在加载..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
